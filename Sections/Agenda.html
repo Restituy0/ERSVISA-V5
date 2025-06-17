@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos | Fundación Sofía Lorenzo</title>
+    <link rel="stylesheet" href="../Css/main.css">
+    <link rel="icon" href="../img/logo.png">
+    <script src="https://kit.fontawesome.com/f66f1c652f.js" crossorigin="anonymous"></script>
+    <style>
+        /* Font Russo One */
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+        /* ------------------ Agenda ------------------ */
+        .contact-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-header {
+            margin-top: 5rem;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .contact-header::after {
+            content: '';
+            width: 100px;
+            height: 5px;
+            background: var(--secondary-color);
+            display: block;
+            margin: 0 auto;
+            border-radius: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item img {
+            width: 15px;
+        }
+
+        /* ------------------ FORMULARIO ------------------ */
+        .contact-form {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .contact-form h1 {
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 1.1em;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 95%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+            color: var(--primary-color);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-light) 100%);
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-color-light);
+        }
+
+        /* ------------------ CONTACTO WHATSAPP ------------------ */
+        .whatsapp-card {
+            margin: 20px auto;
+            background: linear-gradient(135deg, #007a10 0%, #128c7e 100%);
+            border-radius: 15px;
+            color: white;
+            padding: 25px;
+            max-width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-info {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .whatsapp-icon img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .whatsapp-info h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .whatsapp-info p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .btn-whatsapp {
+            width: 60px;
+            height: 60px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            background-color: #128c7e;
+            color: white;
+            text-align: center;
+            padding: 0.9rem;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #007a10;
+        }
+
+        @media (max-width: 768px) {
+
+            .form-group {
+                text-align: center;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">ERS<span>VISA</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="NuestrasOficinas.html">Nuestras Oficinas</a></li>
+                <li><a href="Equipo.html">Sobre Nosotros</a></li>
+                <!-- <li><a href="#" class="btn-date-navbar" style="color: #fff;">Agendar Cita</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-container">
+
+            <!-- Header -->
+            <h2 class="contact-header">AGENDA TU CITA</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+
+                    <img src="../img/ubicacion-icon.svg" alt="Ubicación">
+                    <span>Plaza Rodriguez Estrella, Calle Cristo, Santo Domingo, D.N.</span>
+                </div>
+                <div class="contact-item">
+                    <img src="../img/telefono-icon.svg" alt="Teléfono">
+                    <span>809-397-5678 | 829-321-9182</span>
+                </div>
+                <div class="contact-item">
+                    <img src="../img/correo-icon.svg" alt="Email">
+                    <span>ersvisa@gmail.com</span>
+                </div>
+            </div>
+            <!-- Formulario de Contacto -->
+            <form action="https://formsubmit.co/ersvisa@gmail.com" method="POST" class="contact-form">
+                <h1 style="text-align: center;">Llena este formulario</h1>
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje" style="text-align: center;">Escribe tu mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar</button>
+                <input type="hidden" name="_next" value="https://ersvisa.com/sections/Agenda.html">
+                <input type="hidden" name="_captcha" value="false">
+            </form>
+
+        </section>
+
+        <h3
+            style="text-align: center; border-top: 0.3px solid black; border-bottom: 0.3px solid black; max-width: 1%; margin: 0 auto;">
+            O</h3>
+
+        <!-- Card de WhatsApp -->
+        <div class="whatsapp-card">
+            <div class="whatsapp-info">
+                <h3>Contáctanos en WhatsApp</h3>
+                <p>¿Tienes alguna pregunta? ¡Estamos aquí para ayudarte!</p>
+                <a href="https://wa.link/uropst" class="btn-whatsapp" target="_blank"><i class="fa-solid fa-phone"
+                        style="color: var(--white-color)fff; font-size: 2rem;"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!--Footer-->
+    <footer class="nuevo-footer">
+        <div class="footer-container">
+
+            <!-- Columna: Contacto -->
+            <div class="footer-col contacto">
+                <h3>Contáctanos</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i><a href="mailto:ersvisa@gmail.com">ersvisa@gmail.com</a></li>
+                    <li><i class="fab fa-whatsapp"></i><a href="https://wa.link/uropst" target="_blank">Edward: +1
+                            809-397-5678</a></li>
+                    <li><i class="fab fa-whatsapp"></i><a href="https://wa.link/rfbh0i" target="_blank">Alexandra: +1
+                            829-586-9452</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna: Redes -->
+            <div class="footer-col redes">
+                <h3>Redes Sociales</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/ersvisa/" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ersvisa_abogados_migratorios/" target="_blank"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Columna: Mensaje institucional -->
+            <div class="footer-col mensaje">
+                <h3>ERS<span>VISA</span></h3>
+                <p>Comprometidos con tu futuro migratorio.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 ERSVISA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

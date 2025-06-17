@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ErsVisa - Asesoria y Gestión Migratoria</title>
+    <link rel="stylesheet" href="Css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/Css2?family=Russo+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f66f1c652f.js" crossorigin="anonymous"></script>
+    <style>
+        /* Font Russo One */
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+        /* -- Inicio -- */
+
+        /*Section: Introduction*/
+        .introduction-carousel {
+            position: relative;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-image 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .introduction-carousel .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--white-color);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .introduction-carousel h1 {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 500;
+        }
+
+        .introduction-carousel p {
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to bottom right, var(--secondary-color), var(--secondary-color-light));
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            width: fit-content;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            /* background: var(--secondary-color-light); */
+            transform: scale(1.1);
+        }
+
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-dots button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            background-color: var(--primary-color);
+            /* Azul inactivo */
+            opacity: 0.7;
+            cursor: pointer;
+            transition: background-color 1s ease, transform 0.2s;
+        }
+
+        .carousel-dots button.active {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            background-color: var(--secondary-color);
+            /* Rojo activo */
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+
+        /* Section: About */
+        .about {
+            padding: 0.5rem;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            color: #333;
+        }
+
+        .about .ver-mas {
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .about .ver-mas:hover {
+            font-size: 1rem;
+            color: #999;
+        }
+
+        /* Section: Tabs y Servicios */
+        .services {
+            padding: 1rem;
+            background: var(--background-color);
+        }
+
+        .services h1 {
+            text-align: center;
+            font-weight: 500;
+            font-size: 2rem;
+        }
+
+        .services p {
+            color: #333;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            width: fit-content;
+            height: fit-content;
+            margin-bottom: 2rem;
+            border-radius: 0.2rem;
+            border: 1px solid #d3d3d3;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: var(--white-color);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .tab.active {
+            border: none;
+            border-radius: 0.2rem;
+            background: #e60000;
+            color: var(--white-color);
+        }
+
+        .card-container {
+            perspective: 1000px;
+            width: 15rem;
+            height: 12rem;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .cards.fade-out {
+            opacity: 0;
+        }
+
+        .card.flip-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+            border-radius: 3px;
+        }
+
+        .card.flip-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card-front {
+            background: var(--background-color);
+            color: var(--primary-color);
+        }
+
+        .card-back {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            background: var(--primary-color);
+            color: var(--white-color);
+            transform: rotateY(180deg);
+            text-align: center;
+        }
+
+        .card-back p {
+            color: var(--white-color);
+        }
+
+        .card i {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hint {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-3px);
+            }
+
+            100% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section: Working Process */
+        .working-process {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--background-color);
+            padding: 20px;
+        }
+
+        .working-process h2 {
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .working-process p {
+            font-size: 18px;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .steps {
+            max-width: 23rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .steps i {
+            display: flex;
+            align-items: center;
+            font-size: 50px;
+        }
+
+        .step {
+            min-width: 15rem;
+            background-color: var(--white-color);
+            padding: 20px;
+            border-radius: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .number {
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .step h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .step p {
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Call To Action */
+        .cta {
+            position: relative;
+            background-image: url('Img/visado.webp');
+            background-size: cover;
+            background-position: center;
+            /* background-attachment: fixed; */
+            height: 28rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+            background-image: linear-gradient(to right, rgba(255, 0, 0, 0), var(--primary-color-light));
+            padding: 2rem;
+            min-width: 50rem;
+            max-height: 6.5rem;
+            color: var(--white-color);
+            border-radius: 0 10rem 10rem 0;
+            /*clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);*/
+            margin-left: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .btn-secondary {
+            position: absolute;
+            right: 0;
+            margin-right: 30px;
+            margin-top: -12px;
+            text-align: center;
+            background-color: var(--primary-color-light);
+            color: var(--white-color);
+            padding: 0.9rem;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-decoration: none;
+            animation: scale 1.8s infinite;
+        }
+
+        @keyframes scale {
+            0% {
+                background-color: transparent;
+            }
+
+            50% {
+                background-color: #009900;
+                transform: scale(1.2, 1.2);
+            }
+
+            100% {
+                background-color: transparent;
+            }
+        }
+
+        /* Section: Close */
+        .Close-Section {
+            background: linear-gradient(to top right, var(--primary-color), var(--primary-color-light));
+            color: var(--white-color);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--white-color);
+        }
+
+        .Close-Section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .Close-Section p {
+            font-size: 20px;
+            font-weight: 200;
+            margin-bottom: 30px;
+        }
+
+        .ContactBtn {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: var(--white-color);
+            color: #003366;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 1.5rem;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .ContactBtn:hover {
+            background-color: #b41b1b;
+            color: var(--white-color);
+            transform: scale(1.2);
+        }
+
+        .scroll-indicators {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #d3d3d3;
+        }
+
+        .dot.active {
+            background-color: var(--secondary-color);
+            transform: scale(1.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .introduction-carousel h1 {
+                font-weight: bold;
+                font-size: 2rem;
+            }
+
+            .introduction-carousel p {
+                font-size: 1rem;
+                color: #d3d3d3;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab.active {
+                border-radius: 0.1rem;
+            }
+
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .steps i {
+                transform: rotate(90deg);
+            }
+
+            .cta {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .cta-content {
+                clip-path: none;
+                width: 90%;
+                margin: 0 auto;
+                border-radius: 10rem;
+                min-width: 10rem;
+                text-align: center;
+            }
+
+            .cta-content h2 {
+                font-size: 0.9rem;
+            }
+
+            .btn-secondary {
+                background-color: transparent;
+                margin-right: 0px;
+                margin-top: -18px;
+                text-align: center;
+                transform: scale(0.7, 0.7);
+                transform: rotate(250deg);
+            }
+
+            @keyframes scale {
+                0% {
+                    background-color: transparent;
+                }
+
+                50% {
+                    background-color: transparent;
+                }
+
+                100% {
+                    background-color: transparent;
+                }
+            }
+
+            .scroll-indicators {
+                visibility: hidden;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Mejorado -->
+    <header id="menu" class="navbar">
+        <div class="logo">ERS<span>VISA</span></div>
+
+        <!-- Botón hamburguesa para móviles -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Navegación -->
+        <nav id="navMenu">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="/Sections/NuestrasOficinas.html">Nuestras Oficinas</a></li>
+                <li><a href="/Sections/Equipo.html">Sobre Nosotros</a></li>
+                <!-- <li><a href="Agenda.html" class="btn-date-navbar">Agendar Cita</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Introduction Carrusel -->
+    <section class="introduction-carousel section">
+        <div class="overlay">
+            <h1>Gestión y asesoría migratoria a todos los países</h1>
+            <p>Ofrecemos apoyo legal para trámites de inmigración</p>
+            <a href="Sections/Agenda.html" class="btn-primary">Agenda tu cita</a>
+        </div>
+
+        <div class="carousel-dots" id="carousel-dots">
+            <!-- Los puntitos se generan desde JS -->
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about section">
+        <h2>¿Quiénes Somos?</h2>
+        <p>
+            Somos una firma legal especializada en procesos migratorios, dedicada a ayudar a nuestros clientes a navegar
+            el complejo camino hacia una nueva vida en el extranjero.
+        </p>
+        <a href="#" class="ver-mas">Ver más</a>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <h1>¿Qué hacemos?</h1>
+        <p>Descubre los procesos con los que trabajamos</p>
+        <div class="tabs">
+            <button class="tab active" data-tab="visas">Visas</button>
+            <button class="tab" data-tab="legalizacion">Legalización</button>
+            <button class="tab" data-tab="notarizacion">Notarización</button>
+            <button class="tab" data-tab="consultas">Consultas</button>
+        </div>
+        <div class="cards" id="cards-container">
+            <!-- Se llena dinámicamente -->
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Working Process -->
+    <section class="working-process">
+        <h2>¿Como lo hacemos?</h2>
+        <p>Nuestro proceso simplificado te guía de manera efectiva a través de los siguientes steps:</p>
+        <div class="steps">
+            <div class="step">
+                <div class="number">Paso 1</div>
+                <h3>Consulta Inicial</h3>
+                <p>Comenzamos con una consulta personalizada para entender tus objetivos y necesidades migratorias.
+                </p>
+            </div>
+            <i class="fa-solid fa-shoe-prints"></i>
+            <div class="step">
+                <div class="number">Paso 2</div>
+                <h3>Documentación</h3>
+                <p>Te asistimos en la recopilación y preparación de la documentación necesaria.</p>
+            </div>
+            <i class="fa-solid fa-shoe-prints"></i>
+            <div class="step">
+                <div class="number">Paso 3</div>
+                <h3>Asesoramiento Personalizado</h3>
+                <p>Brindamos asesoramiento adaptado a tu situación para tomar decisiones informadas.</p>
+            </div>
+            <i class="fa-solid fa-shoe-prints"></i>
+            <div class="step">
+                <div class="number">Paso 4</div>
+                <h3>Trámites y Presentación</h3>
+                <p>Realizamos los trámites requeridos y presentamos tus solicitudes con precisión.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indicadores de Navegación Vertical -->
+    <div class="scroll-indicators" id="dot-container"></div>
+
+    <!-- Llamada a la accion -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>¿Qué esperas para pedir tu asesoría?</h2>
+            <a href="https://wa.link/uropst" class="btn-secondary" target="_blank"><i class="fa-solid fa-phone"
+                    style="color: var(--white-color)fff; font-size: 2rem;"></i></a>
+        </div>
+    </section>
+
+    <!-- Sección de Cierre -->
+    <section class="Close-Section section">
+        <div class="CloseContainer">
+            <h2>¿Listo para visitarnos?</h2>
+            <p>¡Esperamos verte pronto en nuestras oficinas! Explora nuestro entorno de trabajo colaborativo y descubre
+                cómo podemos ayudarte a lograr tus objetivos.</p>
+            <a href="Sections/NuestrasOficinas.html" class="ContactBtn">Oficinas</a>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="nuevo-footer">
+        <div class="footer-container">
+
+            <!-- Columna: Contacto -->
+            <div class="footer-col contacto">
+                <h3>Contáctanos</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i><a href="mailto:ersvisa@gmail.com">ersvisa@gmail.com</a></li>
+                    <li><i class="fab fa-whatsapp"></i><a href="https://wa.link/uropst" target="_blank">Edward: +1
+                            809-397-5678</a></li>
+                    <li><i class="fab fa-whatsapp"></i><a href="https://wa.link/rfbh0i" target="_blank">Alexandra: +1
+                            829-586-9452</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna: Redes -->
+            <div class="footer-col redes">
+                <h3>Redes Sociales</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/ersvisa/" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ersvisa_abogados_migratorios/" target="_blank"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Columna: Mensaje institucional -->
+            <div class="footer-col mensaje">
+                <h3>ERS<span>VISA</span></h3>
+                <p>Comprometidos con tu futuro migratorio.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 ERSVISA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Flip Cards -->
+    <script>
+        const cardData = {
+            visas: [
+                { icon: 'fa-solid fa-passport', title: 'Proceso de Visa', description: 'Te ayudamos con todo el proceso de solicitud.' },
+                { icon: 'fa-regular fa-gem', title: 'Visa de Novio', description: 'Unimos corazones en el marco legal adecuado.' },
+                { icon: 'fa-solid fa-file-circle-check', title: 'Perdón (Waiver)', description: 'Asistencia legal para casos de inadmisibilidad.' }
+            ],
+            legalizacion: [
+                { icon: 'fa-solid fa-file-signature', title: 'Documentos Legales' },
+                { icon: 'fa-solid fa-stamp', title: 'Certificaciones Apostilladas' },
+                { icon: 'fa-solid fa-globe', title: 'Traducciones Juradas' }
+            ],
+            notarizacion: [
+                { icon: 'fa-solid fa-pen-fancy', title: 'Notarización de Documentos' },
+                { icon: 'fa-solid fa-file-shield', title: 'Declaraciones Juradas' },
+                { icon: 'fa-solid fa-id-card', title: 'Poderes Notariales' }
+            ],
+            consultas: [
+                { icon: 'fa-solid fa-comments', title: 'Consulta General' },
+                { icon: 'fa-solid fa-user-shield', title: 'Consulta con Abogado' },
+                { icon: 'fa-solid fa-calendar-check', title: 'Revisión de Caso' }
+            ]
+        };
+
+        const tabs = document.querySelectorAll('.tab');
+        const cardsContainer = document.getElementById('cards-container');
+
+        function renderCards(category) {
+            cardsContainer.classList.add('fade-out');
+
+            setTimeout(() => {
+                const cards = cardData[category]
+                    .map(card => `
+                <div class="card-container">
+                    <div class="card flip-card">
+                        <div class="card-front">
+                            <i class="${card.icon}"></i>
+                            <h3>${card.title}</h3>
+                            <div class="hint">↻ Toca aquí</div>
+                        </div>
+                        <div class="card-back">
+                            <p>${card.description || 'Descripción del servicio.'}</p>
+                        </div>
+                    </div>
+                </div>
+            `)
+                    .join('');
+                cardsContainer.innerHTML = cards;
+                cardsContainer.classList.remove('fade-out');
+            }, 300);
+        }
+
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const selectedTab = tab.getAttribute('data-tab');
+                renderCards(selectedTab);
+            });
+        });
+
+        // Render default tab
+        renderCards('visas');
+    </script>
+
+    <!-- Introduction Carrusel -->
+    <script>
+        const images = [
+            'Img/passport.jpeg',
+            'Img/visada.avif',
+            'Img/visado.jpeg',
+            'Img/visado.webp'
+        ];
+
+        const carousel = document.querySelector('.introduction-carousel');
+        const dotsContainer = document.getElementById('carousel-dots');
+        let current = 0;
+        let interval;
+
+        function setImage(index) {
+            current = index;
+            carousel.style.backgroundImage = `url('${images[current]}')`;
+            updateDot();
+        }
+
+        function updateDot() {
+            const dots = dotsContainer.querySelectorAll('button');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === current);
+            });
+        }
+
+        function createDots() {
+            images.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.addEventListener('click', () => {
+                    clearInterval(interval);
+                    setImage(i);
+                    autoRotate(); // reinicia rotación
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function autoRotate() {
+            interval = setInterval(() => {
+                current = (current + 1) % images.length;
+                setImage(current);
+            }, 5000);
+        }
+
+        // Inicializa
+        createDots();
+        setImage(0);
+        autoRotate();
+    </script>
+
+    <!-- Menu Scroll -->
+    <script src="../Js/Navbar.js"></script>
+
+    <!-- Section Scroll -->
+    <script src="Js/Autosections.js"></script>
+
+</body>
+
+</html>
