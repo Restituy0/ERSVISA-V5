@@ -66,29 +66,29 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowUp') scrollToSection(currentIndex - 1);
 });
 
-// --- Swipe para pantallas táctiles --- !!PROBLEMAS!!
-// let touchStartY = 0;
-// let touchEndY = 0;
+// --- Swipe para pantallas táctiles ---
+let touchStartY = 0;
+let touchEndY = 0;
 
-// window.addEventListener('touchstart', (e) => {
-//     touchStartY = e.changedTouches[0].clientY;
-// });
+window.addEventListener('touchstart', (e) => {
+    touchStartY = e.changedTouches[0].clientY;
+});
 
-// window.addEventListener('touchend', (e) => {
-//     touchEndY = e.changedTouches[0].clientY;
-//     handleSwipe();
-// });
+window.addEventListener('touchend', (e) => {
+    touchEndY = e.changedTouches[0].clientY;
+    handleSwipe();
+});
 
-// function handleSwipe() {
-//     const deltaY = touchStartY - touchEndY;
+function handleSwipe() {
+    const deltaY = touchStartY - touchEndY;
 
-//     if (Math.abs(deltaY) > 50) {
-//         if (deltaY > 0) {
-//             // swipe hacia arriba
-//             scrollToSection(currentIndex + 1);
-//         } else {
-//             // swipe hacia abajo
-//             scrollToSection(currentIndex - 1);
-//         }
-//     }
-// }
+    if (Math.abs(deltaY) > 50) {
+        if (deltaY > 0) {
+            // swipe hacia arriba
+            scrollToSection(currentIndex + 1);
+        } else {
+            // swipe hacia abajo
+            scrollToSection(currentIndex - 1);
+        }
+    }
+}
