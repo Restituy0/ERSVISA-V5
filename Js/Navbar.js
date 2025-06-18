@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('menu');
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
@@ -7,14 +8,12 @@
   function onScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Ocultar/mostrar navbar al bajar/subir
     if (scrollTop > lastScrollTop) {
       menu.classList.add('hidden');
     } else {
       menu.classList.remove('hidden');
     }
 
-    // Cambiar estilo al hacer scroll
     if (scrollTop > 50) {
       menu.classList.add('scrolled');
     } else {
@@ -26,7 +25,8 @@
 
   window.addEventListener('scroll', onScroll);
 
-  // Menú responsive toggle
+  // Toggle hamburguesa
   menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('show');
   });
+});
