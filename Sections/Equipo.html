@@ -165,15 +165,23 @@
 
 <body>
     <!-- Navbar -->
-    <header class="navbar">
-        <div class="logo">ERS<span>VISA</span>
+    <header id="menu" class="navbar">
+        <div class="logo">ERS<span>VISA</span></div>
+
+        <!-- Botón hamburguesa para móviles -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <nav>
+
+        <!-- Navegación -->
+        <nav id="navMenu">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="NuestrasOficinas.html">Nuestras Oficinas</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="Agenda.html" class="btn-date-navbar" style="color: #fff;">Agendar Cita</a></li>
+                <!-- <li><a href="#">Sobre Nosotros</a></li> -->
+                <li><a href="Agenda.html" class="btn-date-navbar">Agendar Cita</a></li>
             </ul>
         </nav>
     </header>
